@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -12,37 +13,28 @@ namespace proj.Repositories
 {
     
     class LessonRepository
-    {SQLiteConnection connection;
+    {SQLiteAsyncConnection connection;
         public LessonRepository()
         {
             connection = DependencyService.Get<ISQLiteDb>().GetConnection();
-            connection.CreateTable<Lesson>();
-            // connection.Execute("INSERT INTO Lesson (LessonName) VALUES('C#')");
-            //connection.Execute("INSERT INTO Lesson (LessonName) VALUES('JAVA')");
-            //connection.Execute("INSERT INTO Lesson (LessonName) VALUES('PHP')");
-            //connection.Execute("INSERT INTO Lesson (LessonName) VALUES('C')");
+            connection.CreateTableAsync<Lesson>();
         }
-        public List<Lesson> GetLessonName()
+        async public Task<List<Lesson>> GetLessonName()
         {
-
-            //connection.Execute("INSERT INTO Student VALUES");
-            var ss = connection.Query<Lesson>("SELECT * FROM Lesson ");
+            var ss =await connection.QueryAsync<Lesson>("SELECT * FROM Lesson ");
+            return ss;
+        }
+        async public Task<List<Lesson>> GetLessonNameByFilier(int idfilier)
+        {
+            var ss =await connection.QueryAsync<Lesson>($"SELECT * FROM Lesson WHERE IdFiliere ='{idfilier}' ");
             return ss;
 
         }
-        public List<Lesson> GetLessonNameByFilier(int idfilier)
+        async public Task<int> insertToLesson(string LessonName , int FilierId)
         {
-
-            //connection.Execute("INSERT INTO Student VALUES");
-            var ss = connection.Query<Lesson>($"SELECT * FROM Lesson WHERE IdFiliere ='{idfilier}' ");
-            return ss;
-
-        }
-        public int insertToLesson(string LessonName , int FilierId)
-        {
-           int res =  connection.Execute($"INSERT INTO Lesson (LessonName,IdFiliere) VALUES('{LessonName}','{FilierId}')");
+           int res =await  connection.ExecuteAsync($"INSERT INTO Lesson (LessonName,IdFiliere) VALUES('{LessonName}','{FilierId}')");
             return res;
         }
-        //connection.Execute("INSERT INTO Filiere (FiliereName) VALUES('informatique')");
+        
     }
 }

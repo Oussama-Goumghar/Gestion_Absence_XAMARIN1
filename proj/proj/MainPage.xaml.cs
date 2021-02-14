@@ -10,18 +10,13 @@ using Xamarin.Forms;
 namespace proj
 {
     public partial class MainPage : ContentPage
-    {
-       
+    { 
 
         public MainPage()
         {
             InitializeComponent();
           
         }
-
-      
-       
-
         //}
     }
 }

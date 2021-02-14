@@ -15,7 +15,7 @@ namespace proj.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AbsencePage : ContentPage
     {
-        FiliereRepository dataFilier; 
+        FiliereRepository dataFilier=new FiliereRepository();
         LessonRepository dataLesson = new LessonRepository();
         StudentRepository StudentData = new StudentRepository();
         AbsenceRepository DataAbsence = new AbsenceRepository() ;
@@ -26,26 +26,26 @@ namespace proj.Views
 
         int Idselected;
 
-        public AbsencePage()
+         public AbsencePage()
         {
-
-
-             dataFilier = new FiliereRepository();
             InitializeComponent();
+           
+        }
+
+        async protected override void OnAppearing()
+        {
             DcFilier = new Dictionary<string, int>();
             var Nameist = new List<string>();
-            var flName = dataFilier.GetFilierName();
+            var flName = await dataFilier.GetFilierName();
             foreach (Filiere Data in flName)
             {
                 DcFilier.Add(Data.FiliereName, Data.IdFiliere);
-               Nameist.Add(Data.FiliereName);
+                Nameist.Add(Data.FiliereName);
             }
             Breed1.ItemsSource = Nameist;
-        
-    
-
+            base.OnAppearing();
         }
-        public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        async public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
 
 
@@ -57,12 +57,13 @@ namespace proj.Views
 
                 var FilierName = Breed1.Items[selectedIndex];
                 var id = DcFilier[FilierName];
-                sourceData = new ObservableCollection<Student>(StudentData.GetStudntByFilier(id));
+                var students =await StudentData.GetStudntByFilier(id);
+                sourceData = new ObservableCollection<Student>(students);
                 listUser.ItemsSource = sourceData;
 
                 DcLesson = new Dictionary<string, int>();
                 var NameList = new List<string>();
-                var LessonVar = dataLesson.GetLessonNameByFilier(id);
+                var LessonVar =await dataLesson.GetLessonNameByFilier(id);
                 foreach (Lesson Data in LessonVar)
                 {
                     DcLesson.Add(Data.LessonName, Data.IdLesson);
@@ -131,7 +132,7 @@ namespace proj.Views
 
                 }
             }
-            Console.WriteLine(DataAbsence.CountAbsence());
+            
             DisplayAlert("Saved!", $"{presentstudents.Count()} students are Present, and {selectedList.Count} are Absent.", "Cancel");
         }
         public void chechbox_CheckChanged(object sender, EventArgs e)

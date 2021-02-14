@@ -19,20 +19,26 @@ namespace proj.Views
         {
 
             InitializeComponent();
-            Dc = new Dictionary<string,int>();
-            var Nameist = new List<string>();
-            var flName = dataFilier.GetFilierName();
            
+        }
+
+        async protected override void OnAppearing()
+        {
+            Dc = new Dictionary<string, int>();
+            var Nameist = new List<string>();
+            var flName = await dataFilier.GetFilierName();
+
             foreach (Filiere Data in flName)
             {
 
-                Dc.Add( Data.FiliereName,Data.IdFiliere);
-              
+                Dc.Add(Data.FiliereName, Data.IdFiliere);
+
 
             }
             foreach (var value in Dc.Keys)
                 Nameist.Add(value);
             txtFiliere.ItemsSource = Nameist;
+            base.OnAppearing();
         }
         public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
@@ -75,7 +81,7 @@ namespace proj.Views
 
                 {
 
-                    int rowadd = studentDB.AddStudent(student);
+                    int rowadd =await studentDB.AddStudent(student);
                     if (rowadd <= 0)
                     {
                         Device.BeginInvokeOnMainThread(async () =>

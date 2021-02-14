@@ -11,11 +11,11 @@ namespace DataAccessXamarin.UWP
 {
     public class SQLiteDb : ISQLiteDb
     {
-        public SQLiteConnection GetConnection()
+        public SQLiteAsyncConnection GetConnection()
         {
 			var documentsPath = ApplicationData.Current.LocalFolder.Path;
         	var path = Path.Combine(documentsPath, "MySQLite.db3");
-        	return new SQLiteConnection(path);
+        	return new SQLiteAsyncConnection(path);
         }
     }
 }

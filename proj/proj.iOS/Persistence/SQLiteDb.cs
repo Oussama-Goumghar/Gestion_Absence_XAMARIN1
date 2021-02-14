@@ -10,12 +10,12 @@ namespace DataAccessXamarin.iOS
 {
     public class SQLiteDb : ISQLiteDb
     {
-        public SQLiteConnection GetConnection()
+        public SQLiteAsyncConnection GetConnection()
         {
 			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 
             var path = Path.Combine(documentsPath, "MySQLite.db3");
 
-            return new SQLiteConnection(path);
+            return new SQLiteAsyncConnection(path);
         }
     }
 }

@@ -18,15 +18,6 @@ namespace proj.Views
 
     public partial class RegitrationPage : ContentPage
     {
-
-      
-
-       
-      
-       
-
-
-
         public RegitrationPage()
         {
             InitializeComponent();
@@ -40,19 +31,13 @@ namespace proj.Views
             Password = txtPassword.Text,
             Email = txtemail.Text,
             Phone = txtPhone.Text,
-
-        };
+             };
            
             UserRepository usedb = new UserRepository();
-
-
             try
             {
-                
-               
                 {
-
-                    int rowadd = usedb.AddUser(users);
+                    int rowadd =await usedb.AddUser(users);
                     if (rowadd <=0)
                     {
                         Device.BeginInvokeOnMainThread(async () =>

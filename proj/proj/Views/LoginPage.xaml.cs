@@ -33,12 +33,12 @@ namespace proj.Views
              await Navigation.PushAsync(new RegitrationPage());
         }
 
-        public async void Button_Clicked_1(object sender, EventArgs e)
+         public async void Button_Clicked_1(object sender, EventArgs e)
         {
           
             UserRepository usedb = new UserRepository();
 
-            var validData = usedb.LoginValidate(txtUsernameLogin.Text, txtPasswordLogin.Text);
+            var validData =await usedb.LoginValidate(txtUsernameLogin.Text, txtPasswordLogin.Text);
                 if (validData)
                 {
 

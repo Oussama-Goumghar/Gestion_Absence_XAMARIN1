@@ -15,20 +15,22 @@ namespace proj.Views
     public partial class LessonPage : ContentPage
     {
         LessonRepository dataLesson = new LessonRepository();
-        string  selectedFilierName;
+        FiliereRepository dataFilier = new FiliereRepository();
+
+        string selectedFilierName;
         Dictionary<String, int> Dc;
         int id;
+
         public LessonPage()
         {
             InitializeComponent();
-            FiliereRepository dataFilier = new FiliereRepository();
-            
-           
+        }
 
-
+        async protected override void OnAppearing()
+        {
             var Nameist = new List<string>();
             Dc = new Dictionary<string, int>();
-            var flName = dataFilier.GetFilierName();
+            var flName = await dataFilier.GetFilierName();
             foreach (Filiere Data in flName)
             {
                 Dc.Add(Data.FiliereName, Data.IdFiliere);
@@ -36,7 +38,9 @@ namespace proj.Views
             foreach (var value in Dc.Keys)
                 Nameist.Add(value);
             PickerFilier.ItemsSource = Nameist;
+            base.OnAppearing();
         }
+
         public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
 

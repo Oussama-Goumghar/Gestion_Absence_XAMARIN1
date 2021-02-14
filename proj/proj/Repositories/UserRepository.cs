@@ -15,40 +15,35 @@ namespace proj.Repositories
 {
     public  class UserRepository
      {
-        SQLiteConnection connection;
+        SQLiteAsyncConnection connection;
      
         public UserRepository()
         {
             connection = DependencyService.Get<ISQLiteDb>().GetConnection();
-            connection.CreateTable<User>();
-
-
+            connection.CreateTableAsync<User>();
         }
 
       
 
-        public IEnumerable<User> GetUsers()
+        //public IEnumerable<User> GetUsers()
+        //{
+        //    return (from u in connection.Table<User>()
+        //            select u).ToList();
+        //}
+        //public void DeleteUser(int id)
+        //{
+        //    connection.Delete<User>(id);
+        //}
+        async public  Task<int>  AddUser(User user)
         {
-            return (from u in connection.Table<User>()
-                    select u).ToList();
-        }
-        public void DeleteUser(int id)
-        {
-            connection.Delete<User>(id);
-        }
-        public  int  AddUser(User user)
-        {
-           
-
-             int rows =    connection.Insert(user);
+             int rows =await connection.InsertAsync(user);
                 return rows;
-            
         }
 
-        public bool LoginValidate(string userName1, string pwd1)
+        async public Task<bool> LoginValidate(string userName1, string pwd1)
         {
             var data = connection.Table<User>();
-            var d1 = data.Where(x => x.Username == userName1 && x.Password == pwd1).FirstOrDefault();
+            var d1 = await data.Where(x => x.Username == userName1 && x.Password == pwd1).FirstOrDefaultAsync();
             if (d1 != null)
             {
                 return true;
