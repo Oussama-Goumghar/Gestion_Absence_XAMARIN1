@@ -1,10 +1,12 @@
-﻿using proj.Models;
+﻿using DataAccessXamarin;
+using proj.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace proj.Repositories
 {
@@ -15,9 +17,8 @@ namespace proj.Repositories
         
     public FiliereRepository()
         {
-        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "databasePr.db3");
-        connection = new SQLiteConnection(dbPath);
-        connection.CreateTable<Filiere>();
+            connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            connection.CreateTable<Filiere>();
 
      // connection.Execute("INSERT INTO Filiere (FiliereName) VALUES('informatique')");
      // connection.Execute("INSERT INTO Filiere (FiliereName) VALUES('Genie mecanique')");

@@ -1,4 +1,5 @@
-﻿using proj.Models;
+﻿using DataAccessXamarin;
+using proj.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -6,18 +7,19 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace proj.Repositories
 {
     class AbsenceRepository
     {
-        SQLiteConnection connection;
+      private SQLiteConnection _connection;
        
             public AbsenceRepository()
         {
-        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "databasePr.db3");
-        connection = new SQLiteConnection(dbPath);
-        connection.CreateTable<Absence>();
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+
+            _connection.CreateTable<Absence>();
         }
 
         // public int InsertAbsence(int IdStudent, int IdLesson , Boolean IsPersnt)
@@ -29,13 +31,13 @@ namespace proj.Repositories
         {
 
             //connection.Execute("INSERT INTO Student VALUES");
-            int rows = connection.Insert(absence);
+            int rows = _connection.Insert(absence);
             return rows;
 
         }
         public int CountAbsence()
         {
-            var allItems = connection.Table<Absence>().ToList();
+            var allItems = _connection.Table<Absence>().ToList();
             int count = allItems.Count();
             return count;
 
@@ -46,7 +48,7 @@ namespace proj.Repositories
         {
 
             //connection.Execute("INSERT INTO Student VALUES");
-            var ss = connection.Query<Student>($"SELECT * FROM Student WHERE IdStudent in (SELECT IdStudent FROM Absence WHERE IdLesson = '{idLessons}') ");
+            var ss = _connection.Query<Student>($"SELECT * FROM Student WHERE IdStudent in (SELECT IdStudent FROM Absence WHERE IdLesson = '{idLessons}') ");
             return ss;
 
         }
@@ -54,14 +56,14 @@ namespace proj.Repositories
         {
 
             //connection.Execute("INSERT INTO Student VALUES");
-            var ss = connection.Query<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons}");
+            var ss = _connection.Query<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons}");
             return ss;
 
         }
         public int UpdateAbcense(int Id , bool IsPersnt)
         {
          
-            int res = connection.Execute($"update Absence set IsPersnt={IsPersnt} where IdAbsence={Id} ");
+            int res = _connection.Execute($"update Absence set IsPersnt={IsPersnt} where IdAbsence={Id} ");
             return res;
 
         }

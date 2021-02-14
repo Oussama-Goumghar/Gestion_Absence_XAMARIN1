@@ -1,10 +1,12 @@
-﻿using proj.Models;
+﻿using DataAccessXamarin;
+using proj.Models;
 using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace proj.Repositories
 {
@@ -13,9 +15,8 @@ namespace proj.Repositories
     {SQLiteConnection connection;
         public LessonRepository()
         {
-        string dbPath = Path.Combine(FileSystem.AppDataDirectory, "databasePr.db3");
-        connection = new SQLiteConnection(dbPath);
-        connection.CreateTable<Lesson>();
+            connection = DependencyService.Get<ISQLiteDb>().GetConnection();
+            connection.CreateTable<Lesson>();
             // connection.Execute("INSERT INTO Lesson (LessonName) VALUES('C#')");
             //connection.Execute("INSERT INTO Lesson (LessonName) VALUES('JAVA')");
             //connection.Execute("INSERT INTO Lesson (LessonName) VALUES('PHP')");

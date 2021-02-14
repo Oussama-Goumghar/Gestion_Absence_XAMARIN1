@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using System.Linq;
 using Xamarin.Essentials;
 using System.IO;
+using DataAccessXamarin;
 
 namespace proj.Repositories
 {
@@ -18,8 +19,7 @@ namespace proj.Repositories
      
         public UserRepository()
         {
-            string dbPath = Path.Combine(FileSystem.AppDataDirectory, "databasePr.db3");
-            connection = new SQLiteConnection(dbPath);
+            connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             connection.CreateTable<User>();
 
 
