@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             x:Class="proj.Views.AbsencePage">
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="3,3,3,3">
+            <ScrollView>
+                <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Start" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  Width="*"></ColumnDefinition>
+                            <ColumnDefinition  Width="190"></ColumnDefinition>
+                            <ColumnDefinition  Width="190"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Picker WidthRequest="100" x:Name="Breed1" Title="Filier" Grid.Row="0"  Grid.Column="1" SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                            <Picker.Items>
+                            </Picker.Items>
+                        </Picker>
+                        <Picker  WidthRequest="100" x:Name="LessonPicker"  Title="Lesson" Grid.Row="0"  Grid.Column="2" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged" >
+                            <Picker.Items>
+                            </Picker.Items>
+                        </Picker>
+                    </Grid>
+                    <ListView x:Name="listUser" HasUnevenRows="True" IsVisible="True"  RowHeight="50" CachingStrategy= " RecycleElement" SeparatorColor="Black" VerticalOptions="FillAndExpand" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout Orientation="Horizontal" Margin="6,6,23,6">
+                                            <Label FontSize="15"  HorizontalOptions="StartAndExpand" Margin="10,20,6,6" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding nom }"  FontAttributes="Bold" />
+                                                        <Span Text="  " />
+                                                        <Span Text="{Binding Prenom}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <input:CheckBox IsChecked="{Binding IsChecked}" x:Name="chechboxx" CheckChanged="chechbox_CheckChanged" Type="Check" Color="Purple" BoxBackgroundColor="Transparent"  TextColor="Black" HeightRequest="40" BindingContext="{Binding .} "/>
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </FlexLayout>
+            </ScrollView>
+            <Button Text="Cancel" AbsoluteLayout.LayoutBounds="20,530,120,60" TextColor="White" BackgroundColor="Red" Clicked="BtnCanel"></Button>
+            <Button Text="Save" AbsoluteLayout.LayoutBounds="270,530,120,60" TextColor="White" BackgroundColor="Blue" Clicked="BtnSave"></Button>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

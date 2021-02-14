@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="proj.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                
+               <StackLayout Grid.Row="1" >
+                    <Frame>
+                    <Entry Placeholder="Usernamme" FontSize="16" x:Name="txtUsernameLogin"></Entry>  </Frame>
+                </StackLayout>
+               
+               
+                    <StackLayout Grid.Row="2"> 
+                        <Frame> 
+                    <Entry Placeholder="Password" FontSize="16" x:Name="txtPasswordLogin" IsPassword="True"></Entry>   </Frame>
+                    </StackLayout>
+             
+                <StackLayout Grid.Row="3">
+                    <Button Text="Login" HorizontalOptions= "FillAndExpand" TextColor="#fff" BackgroundColor="Blue"  Clicked="Button_Clicked_1"></Button>
+                   
+                </StackLayout>
+                <StackLayout Grid.Row="4">
+                    <Button Text="SignUp" Clicked="Button_Clicked"></Button>
+                </StackLayout>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

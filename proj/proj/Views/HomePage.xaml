@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="proj.Views.HomePage"
+             Title="Home "
+            >
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="Logout" Priority="2" Clicked="lougOut_Clicked" />
+    </ContentPage.ToolbarItems>
+    <Grid Padding="7">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        
+        </Grid.ColumnDefinitions>
+        <Label Padding="20" x:Name="lbn" Text=""  Grid.Row="0" Grid.ColumnSpan="2" TextColor="White" BackgroundColor="#120078" FontSize="20"> </Label>
+        <Button  Text="Absence" Grid.Column="0" Grid.Row="1" TextColor="White" BackgroundColor="#120078" HeightRequest="5" WidthRequest="4"  FontSize="20" Clicked="Button_Clicked"></Button>
+        <Button Text="Add Student" Grid.Column="1" Grid.Row="1" FontSize="20" BackgroundColor="#120078" TextColor="White" Clicked="BtnAddStudent"></Button>
+        <Button Text="New lesson" Grid.Column="0" Grid.Row="2" FontSize="20" BackgroundColor="#120078" TextColor="White" Clicked="BtnLessonPage" ></Button>
+        <Button Text="Search" Grid.Column="1" Grid.Row="2" FontSize="20" BackgroundColor="#120078" TextColor="White" Clicked="BtnSearch"> </Button>
+        <Button Padding="20"  x:Name="lougOut" Text="Loge  out " Clicked="lougOut_Clicked"  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" BackgroundColor="red" TextColor="White"></Button>
+      
+    </Grid>
+   
+</ContentPage>

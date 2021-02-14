@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="proj.MainPage"
+             Padding="15">
+    
+    <StackLayout 
+        VerticalOptions="Center"
+        Spacing="10"
+        Background="#dde "
+        Padding="10"
+        >
+    
+        <Entry x:Name="textname" Placeholder="enter your name" HorizontalOptions="FillAndExpand"></Entry>
+        <Entry x:Name="textPass" Placeholder="enter your Password" HorizontalOptions="FillAndExpand" IsPassword="True"></Entry>
+        <Button x:Name="btnAdd"  Text="ajouter " Background="#fead11" TextColor="#fff"></Button>
+        <Button x:Name="GetButton" Text="Liste" Background="#de2211"   TextColor="#fff"></Button>
+        <Label x:Name="statumessg"></Label>
+        
+    </StackLayout>
+
+</ContentPage>
