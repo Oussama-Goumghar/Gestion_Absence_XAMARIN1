@@ -2,73 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="proj.Views.AddStudent">
-    <ContentPage.Content>
+  <ContentPage.Content>
+     <ScrollView>
         <StackLayout>
-            <Grid Margin="20,0,20,0" VerticalOptions="CenterAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Row="0"   Grid.ColumnSpan="2" >
-                    <Frame>
-                        <Entry Placeholder="CIN" FontSize="16" x:Name="txtCin" Grid.Row="0"   Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"></Entry>
-                    </Frame>
-                </StackLayout>
-                <StackLayout Grid.Row="1"  Grid.ColumnSpan="2">
-                    <Frame>
-                        <Entry Placeholder="Nom" FontSize="16" x:Name="txtNom" Keyboard="Text"></Entry>
-                    </Frame>
-                </StackLayout>
-                <StackLayout Grid.Row="2"  Grid.ColumnSpan="2">
-                    <Frame>
-                        <Entry Placeholder="Prenom" FontSize="16" x:Name="txtPrenom" Keyboard="Text"></Entry>
-                    </Frame>
-                </StackLayout>
-                <StackLayout Grid.Row="3"  Grid.ColumnSpan="2">
-                    <Frame>
-                        <Entry Placeholder="phone number " FontSize="16" x:Name="txtPhone" Keyboard="Numeric"></Entry>
-                    </Frame>
-                </StackLayout>
-                
-                <StackLayout Grid.Row="4"  Grid.ColumnSpan="2">
-                    <Frame>
-                        <Entry Placeholder="Email" FontSize="16" x:Name="txtEmail" Keyboard="Email"></Entry>
-                    </Frame>
-                </StackLayout>
-
-                <StackLayout Grid.Row="5"  Grid.ColumnSpan="2">
-                    <Frame>
-
-
-                        <Picker WidthRequest="150" x:Name="txtFiliere" Title="Filier" SelectedIndexChanged="OnPickerSelectedIndexChanged" >
-                                <Picker.Items>
-                                </Picker.Items>
-                            </Picker>
-                        
-                       </Frame>
-                </StackLayout>
-
-                <StackLayout Grid.Row="6"  Grid.ColumnSpan="2" >
-                    <Button Text="Save"  TextColor="#fff" BackgroundColor="Blue" WidthRequest="100" Clicked="BtnAddStudent" ></Button>
-                </StackLayout>
-
-                <StackLayout Grid.Row="7" Grid.ColumnSpan="2"  >
-                    <Button Text="Cancel"  TextColor="#fff" BackgroundColor="red" WidthRequest="100" Clicked="BtnCancel"></Button>
-                </StackLayout>
-
-            </Grid>
+            <Frame>
+                <Entry Placeholder="CIN" FontSize="16" x:Name="txtCin" Grid.Row="0"   Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"></Entry>
+            </Frame>
+            <Frame>
+                <Entry Placeholder="Nom" FontSize="16" x:Name="txtNom" Keyboard="Text"></Entry>
+            </Frame>
+            <Frame>
+                <Entry Placeholder="Prenom" FontSize="16" x:Name="txtPrenom" Keyboard="Text"></Entry>
+            </Frame>
+            <Frame>
+                <Entry Placeholder="phone number " FontSize="16" x:Name="txtPhone" Keyboard="Numeric"></Entry>
+            </Frame>
+            <Frame>
+                <Entry Placeholder="Email" FontSize="16" x:Name="txtEmail" Keyboard="Email"></Entry>
+            </Frame>
+            <Frame>
+                <Picker WidthRequest="150" x:Name="txtFiliere" Title="Filier" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
+            </Frame>
+            <StackLayout Orientation="Horizontal" Padding="20">
+                <Button Text="Save"  TextColor="#fff" BackgroundColor="Blue" WidthRequest="150" Clicked="BtnAddStudent"  HeightRequest="60"></Button>
+                <Button Text="Cancel"  TextColor="#fff" BackgroundColor="red" WidthRequest="150" HeightRequest="60" Clicked="BtnCancel" HorizontalOptions="EndAndExpand"></Button>
+            </StackLayout>
         </StackLayout>
-    </ContentPage.Content>
+     </ScrollView>
+  </ContentPage.Content>
 </ContentPage>
