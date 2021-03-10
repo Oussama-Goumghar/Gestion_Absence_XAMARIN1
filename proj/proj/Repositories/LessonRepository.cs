@@ -23,7 +23,7 @@ namespace proj.Repositories
         }
         async public Task<List<Lesson>> GetLessonName()
         {
-            var ss =await connection.QueryAsync<Lesson>("SELECT * FROM Lesson ");
+            var ss =await connection.QueryAsync<Lesson>("SELECT * FROM Lesson");
             return ss;
         }
         async public Task<List<Lesson>> GetLessonNameByFilier(int idfilier)
