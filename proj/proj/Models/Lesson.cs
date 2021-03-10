@@ -19,5 +19,8 @@ namespace proj.Models
 
         [ForeignKey(typeof(Filiere))]
         public int IdFiliere { get; set; }
+
+        [ManyToOne]
+        public Filiere filiere { get; set; }
     }
 }

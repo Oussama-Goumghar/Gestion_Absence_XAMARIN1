@@ -52,16 +52,16 @@ namespace proj.Views
                 StudentRepository StudentData = new StudentRepository();
                 selectedFilierName = PickerFilier.Items[selectedIndex];
                 id = Dc[selectedFilierName];
-            
+                DisplayAlert("info", "Id est: " + id, "ok");  
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        async private void Button_Clicked(object sender, EventArgs e)
         {
 
             var LessonName = txtLessName.Text;
             Console.WriteLine(selectedFilierName);
-            dataLesson.insertToLesson(LessonName, id);
+           await dataLesson.insertToLesson(LessonName, id);
         }
     }
 }

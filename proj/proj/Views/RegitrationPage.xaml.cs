@@ -25,53 +25,59 @@ namespace proj.Views
 
         public async void btnAddUser(object sender, EventArgs e)
         {
-            User users = new User()
-            {
-            Username = txtUsername.Text,
-            Password = txtPassword.Text,
-            Email = txtemail.Text,
-            Phone = txtPhone.Text,
-             };
-           
-            UserRepository usedb = new UserRepository();
-            try
-            {
-                {
-                    int rowadd =await usedb.AddUser(users);
-                    if (rowadd <=0)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            var resut = await this.DisplayAlert("Erorr ", "user not add ", "Ok","Cancel");
-                            if (resut)
-                            {
-                                await Navigation.PushAsync(new RegitrationPage());
-                            }
 
-                        });
-                      
-                    }
-                    else
-                    {
-
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            var resut = await this.DisplayAlert("Congratulation ", "user Registeration Sucessfull ", "Ok", "Cancel");
-                            if (resut)
-                            {
-                                await Navigation.PushAsync(new LoginPage());
-                            }
-                        });
-                    }
-                    
-                }
-                
-
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtemail.Text) || string.IsNullOrWhiteSpace(txtPhone.Text)){
+               await DisplayAlert("Erorr ", "Il faut remplire tous les champs", "Ok", "Cancel");
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+            else{
+                User users = new User()
+                {
+                    Username = txtUsername.Text,
+                    Password = txtPassword.Text,
+                    Email = txtemail.Text,
+                    Phone = txtPhone.Text,
+                };
 
+                UserRepository usedb = new UserRepository();
+                try
+                {
+                    {
+                        bool rowadd = await usedb.AddUser(users);
+                        if (!rowadd)
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                var resut = await this.DisplayAlert("Erorr ", "User déja existe", "Ok", "Cancel");
+                                if (resut)
+                                {
+                                    await Navigation.PushAsync(new RegitrationPage());
+                                }
+
+                            });
+
+                        }
+                        else
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                var resut = await this.DisplayAlert("Congratulation ", "user Registeration Sucessfull ", "Ok", "Cancel");
+                                if (resut)
+                                {
+                                    await Navigation.PushAsync(new LoginPage());
+                                }
+                            });
+                        }
+
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                }
             }
         }
     }

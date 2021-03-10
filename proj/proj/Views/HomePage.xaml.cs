@@ -53,5 +53,10 @@ namespace proj.Views
 
         }
 
+        async public void ToolbarItem_Activated(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FilierePage());
+
+        }
     }
 }

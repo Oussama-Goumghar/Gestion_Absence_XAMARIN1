@@ -5,7 +5,9 @@
              Title="Home "
             >
     <ContentPage.ToolbarItems >
-        <ToolbarItem Text="Logout" Priority="2" Clicked="lougOut_Clicked" />
+        <ToolbarItem Text="Logout" Priority="2" Order="Primary" Clicked="lougOut_Clicked" />
+        <ToolbarItem Text="Ajouter filiere" Order="Secondary" Activated="ToolbarItem_Activated"/>
+
     </ContentPage.ToolbarItems>
     <Grid Padding="7">
         <Grid.RowDefinitions>
@@ -28,5 +30,5 @@
         <Button Padding="20"  x:Name="lougOut" Text="Loge  out " Clicked="lougOut_Clicked"  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" BackgroundColor="red" TextColor="White"></Button>
       
     </Grid>
-   
+
 </ContentPage>

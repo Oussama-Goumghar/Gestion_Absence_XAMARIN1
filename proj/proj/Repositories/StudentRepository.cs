@@ -21,10 +21,18 @@ namespace proj.Repositories
             connection = DependencyService.Get<ISQLiteDb>().GetConnection();
             connection.CreateTableAsync<Student>();
         }
-        async public Task<int> AddStudent(Student student)
+        async public Task<bool> AddStudent(Student student)
         {
-            int rows =await connection.InsertAsync(student);
-            return rows;
+            if (await CheckExistence(student.cin))
+            {
+                return false;
+            }
+            else
+            {
+                await connection.InsertAsync(student);
+                return true;
+            }
+            
         }
         async public Task<List<Student>> GetStudntByFilier(int  filierid)
         {
@@ -46,7 +54,19 @@ namespace proj.Repositories
 
         }
 
-        
+        async public Task<bool> CheckExistence(string CIN)
+        {
+            var data = connection.Table<Student>();
+            var d1 = await data.Where(x => x.cin == CIN).FirstOrDefaultAsync();
+            if (d1 != null)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+
     }
 }
 

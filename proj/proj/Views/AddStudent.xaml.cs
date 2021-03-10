@@ -46,72 +46,78 @@ namespace proj.Views
 
             int selectedIndex = txtFiliere.SelectedIndex;
 
-            if (selectedIndex != -1)
+            if (selectedIndex > -1)
             {
                 StudentRepository StudentData = new StudentRepository();
                 selectedFilierName = txtFiliere.Items[selectedIndex];
-                this.selectedFilierName = selectedFilierName;
-
             }
         }
 
         async public void BtnAddStudent(object sender, EventArgs e)
         {
-            Filiere f = new Filiere()
+
+            if (string.IsNullOrWhiteSpace(txtCin.Text) || string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPhone.Text) || string.IsNullOrWhiteSpace(txtNom.Text) || string.IsNullOrWhiteSpace(txtPrenom.Text) || Dc[selectedFilierName]==null)
             {
-              //  FiliereName = txt
+                await DisplayAlert("Erorr ", "If remplire tous les champs ", "Ok", "Cancel");
 
-            };
-            Student student = new Student()
-            {
-                cin = txtCin.Text,
-                Email = txtEmail.Text,
-                Phone = txtPhone.Text,
-                nom = txtNom.Text,
-                Prenom = txtPrenom.Text,
-                IdFiliere = Dc[selectedFilierName] 
-            };
-
-            StudentRepository studentDB = new StudentRepository();
-
-
-            try
+            }
+            else
             {
 
 
+
+                Student student = new Student()
+                {
+                    cin = txtCin.Text,
+                    Email = txtEmail.Text,
+                    Phone = txtPhone.Text,
+                    nom = txtNom.Text,
+                    Prenom = txtPrenom.Text,
+                    IdFiliere = Dc[selectedFilierName]
+                };
+
+                StudentRepository studentDB = new StudentRepository();
+
+
+                try
                 {
 
-                    int rowadd =await studentDB.AddStudent(student);
-                    if (rowadd <= 0)
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
+
+                    
+
+                        bool rowadd = await studentDB.AddStudent(student);
+                        if (!rowadd)
                         {
-                            var resut = await this.DisplayAlert("Erorr ", "Student not add ", "Ok", "Cancel");
-                            if (resut)
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await Navigation.PushAsync(new AddStudent());
-                            }
+                                var resut = await this.DisplayAlert("Erorr ", "Student not add ", "Ok", "Cancel");
+                                if (resut)
+                                {
+                                    await Navigation.PushAsync(new AddStudent());
+                                }
 
-                        });
+                            });
 
-                    }
-                    else
-                    {
-
-                        Device.BeginInvokeOnMainThread(async () =>
+                        }
+                        else
                         {
-                            var resut = await this.DisplayAlert("Congratulation ", "Student Add Sucessfull ", "Ok", "Cancel");
-                            if (resut)
+
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await Navigation.PushAsync(new HomePage());
-                            }
-                        });
-                    }
+                                var resut = await this.DisplayAlert("Congratulation ", "Student Add Sucessfull ", "Ok", "Cancel");
+                                if (resut)
+                                {
+                                    await Navigation.PushAsync(new HomePage());
+                                }
+                            });
+                        }
+                    
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+
+                }
 
             }
         }

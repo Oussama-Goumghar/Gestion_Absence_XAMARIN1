@@ -14,6 +14,8 @@ namespace proj.Repositories
     
     class LessonRepository
     {SQLiteAsyncConnection connection;
+
+        FiliereRepository filiereRepository = new FiliereRepository();
         public LessonRepository()
         {
             connection = DependencyService.Get<ISQLiteDb>().GetConnection();
@@ -26,15 +28,49 @@ namespace proj.Repositories
         }
         async public Task<List<Lesson>> GetLessonNameByFilier(int idfilier)
         {
+            
             var ss =await connection.QueryAsync<Lesson>($"SELECT * FROM Lesson WHERE IdFiliere ='{idfilier}' ");
             return ss;
 
         }
-        async public Task<int> insertToLesson(string LessonName , int FilierId)
+        async public Task<bool> insertToLesson(string LessonName , int FilierId)
         {
-           int res =await  connection.ExecuteAsync($"INSERT INTO Lesson (LessonName,IdFiliere) VALUES('{LessonName}','{FilierId}')");
+           if(await checkExistance(LessonName, FilierId))
+            {
+                return false;
+            }
+            else
+            {
+                Lesson lesson = new Lesson()
+                {
+                    LessonName = LessonName,
+                    IdFiliere = FilierId
+                };
+                await connection.InsertAsync(lesson);
+                Filiere filiere = await filiereRepository.GetFiliereById(FilierId);
+                filiere.lessons.Add(lesson);
+                
+                return true;
+
+            }
+
+        }
+
+        async public Task<bool> checkExistance(string LessonName, int FilierId)
+        {
+            bool res = false;
+            Filiere filiere = await filiereRepository.GetFiliereById(FilierId);
+            foreach (var item in filiere.lessons)
+            {
+                if (item.LessonName == LessonName)
+                {
+                    res = true;
+                }
+            }
             return res;
         }
+
+
         
     }
 }

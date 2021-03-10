@@ -17,7 +17,6 @@ namespace proj.Models
         public string cin { get; set; }
 
         [MaxLength(100)]
-
         public string Email { get; set; }
         [MaxLength(100)]
         public string Phone { get; set; }

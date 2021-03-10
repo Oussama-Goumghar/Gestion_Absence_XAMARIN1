@@ -152,25 +152,25 @@ namespace proj.Views
             DisplayAlert("Title", NowselectedListAbsence.Count + " student are relly absence   " + NowselectedListPresnet.Count + "student are relly presnt", "Cancel");
 
         }
-        public void Update_btn(object sender, EventArgs e)
+        async public void Update_btn(object sender, EventArgs e)
         {
             if (NowselectedListPresnet.Count > 0)
             {
                 foreach (var student in NowselectedListPresnet)
                 {
-                    DataAbsence.UpdateAbcense(student.IdAbsence, false);
+                   await DataAbsence.UpdateAbcense(student.IdAbsence, false);
                 }
             }
             if (NowselectedListAbsence.Count > 0)
             {
                 foreach (var student in NowselectedListAbsence)
                 {
-                    DataAbsence.UpdateAbcense(student.IdAbsence, true);
+                   await DataAbsence.UpdateAbcense(student.IdAbsence, true);
                     
                 }
                 
             }
-            DisplayAlert("Title", "table absence update", "Cancel");
+         await  DisplayAlert("Title", "table absence update", "Cancel");
         }
      async public void BtnCanel(object sender, EventArgs e)
     {

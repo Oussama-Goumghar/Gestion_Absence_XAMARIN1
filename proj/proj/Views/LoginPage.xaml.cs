@@ -35,7 +35,12 @@ namespace proj.Views
 
          public async void Button_Clicked_1(object sender, EventArgs e)
         {
-          
+            if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
+            {
+                await DisplayAlert("Login Failed", "Il faut remplire tous les champs", "OK");
+            }
+            else
+            {
             UserRepository usedb = new UserRepository();
 
             var validData =await usedb.LoginValidate(txtUsernameLogin.Text, txtPasswordLogin.Text);
@@ -49,7 +54,8 @@ namespace proj.Views
 
                     await DisplayAlert("Login Failed", "Username or Password Incorrect", "OK");
                 }
-           
+            }
+
         }
     }
 }

@@ -16,6 +16,10 @@ namespace proj.Models
         public string  FiliereName { get; set; }
 
         [OneToMany] 
-        public List<Student> student { get; set; }
+        public List<Student> students { get; set; }
+
+        [OneToMany] 
+        public List<Lesson> lessons { get; set; }
+
     }
 }
