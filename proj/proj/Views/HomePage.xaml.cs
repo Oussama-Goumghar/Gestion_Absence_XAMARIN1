@@ -48,7 +48,7 @@ namespace proj.Views
         async public void BtnSearch(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new SearchPage());
+            await Navigation.PushAsync(new StatisticsPage());
 
 
         }

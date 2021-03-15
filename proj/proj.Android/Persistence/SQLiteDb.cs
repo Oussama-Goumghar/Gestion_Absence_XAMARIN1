@@ -13,7 +13,7 @@ namespace DataAccessXamarin.Droid
 		public SQLiteAsyncConnection GetConnection()
 		{
 			var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var path = Path.Combine(documentsPath, "MySQLite.db3");
+			var path = Path.Combine(documentsPath, "MySQLite.db1");
 
 			return new SQLiteAsyncConnection(path);
 		}

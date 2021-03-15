@@ -41,7 +41,7 @@ namespace proj.Views
             base.OnAppearing();
         }
 
-        public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
+        async public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
 
 
@@ -49,19 +49,50 @@ namespace proj.Views
 
             if (selectedIndex != -1)
             {
+                FiliereRepository filiereRepository = new FiliereRepository();
                 StudentRepository StudentData = new StudentRepository();
                 selectedFilierName = PickerFilier.Items[selectedIndex];
                 id = Dc[selectedFilierName];
-                DisplayAlert("info", "Id est: " + id, "ok");  
+                //Filiere filiere = await filiereRepository.GetFiliereById(id);
+                //var count = filiere.lessons.Count();
+                //await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
+
+
+
+
             }
         }
 
         async private void Button_Clicked(object sender, EventArgs e)
         {
+            FiliereRepository filiereRepository = new FiliereRepository();
 
             var LessonName = txtLessName.Text;
             Console.WriteLine(selectedFilierName);
-           await dataLesson.insertToLesson(LessonName, id);
+        var res=   await dataLesson.insertToLesson(LessonName, id);
+            if (res)
+            {
+                Filiere filiere = await filiereRepository.GetFiliereById(id);
+                var count = filiere.lessons.Count();
+                await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
+
+            }
+            //if (filiere.lessons != null)
+            //{
+            //    var count = filiere.lessons.Count();
+            //    await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
+            //}
+            //else
+            //{
+            //    await this.DisplayAlert("info","la liste est null", "ok");
+
+            //   }
+
+
+            
+
+
+
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 namespace proj.Models
 {
     [Table("Filiere")]
-    class Filiere
+    public class Filiere
     {
         [PrimaryKey, AutoIncrement]
         public int IdFiliere { get; set; }
@@ -15,11 +15,17 @@ namespace proj.Models
         [MaxLength(100), Unique]
         public string  FiliereName { get; set; }
 
-        [OneToMany] 
-        public List<Student> students { get; set; }
+        [OneToMany]
+        public List<Student> students { get; set; } = new List<Student>();
 
-        [OneToMany] 
-        public List<Lesson> lessons { get; set; }
+        [OneToMany]
+        public List<Lesson> lessons { get; set; } = new List<Lesson>();
 
+
+        //public Filiere()
+        //{
+        //    this.lessons = new List<Lesson> ();
+        //    this.students = new List<Student>();
+        //}
     }
 }

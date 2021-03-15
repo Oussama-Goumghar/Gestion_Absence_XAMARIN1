@@ -8,7 +8,7 @@ using System.Windows.Input;
 namespace proj.Models
 {
     [Table("Student")]
-    class Student
+    public class Student
     {
    
         [PrimaryKey, AutoIncrement]
@@ -29,6 +29,9 @@ namespace proj.Models
 
         [ForeignKey(typeof(Filiere))]
         public int IdFiliere { get; set; }
+
+        [ManyToOne]
+        public Filiere filiere { get; set; }
 
         [ManyToMany(typeof(Absence))]
         public List<Lesson> Etat { get; set; }

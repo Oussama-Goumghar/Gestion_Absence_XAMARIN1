@@ -3,6 +3,7 @@ using proj.Repositories;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,11 @@ namespace proj.Views
 
          public async void Button_Clicked_1(object sender, EventArgs e)
         {
+
+            FiliereRepository f = new FiliereRepository();
+            var j = await f.getall();
+            Debug.WriteLine("hello");
+
             if (string.IsNullOrWhiteSpace(txtUsernameLogin.Text) || string.IsNullOrWhiteSpace(txtPasswordLogin.Text))
             {
                 await DisplayAlert("Login Failed", "Il faut remplire tous les champs", "OK");

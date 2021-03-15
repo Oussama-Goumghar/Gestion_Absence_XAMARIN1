@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SQLiteNetExtensionsAsync.Extensions;
+
 
 namespace proj.Views
 {
@@ -21,7 +23,7 @@ namespace proj.Views
         AbsenceRepository DataAbsence = new AbsenceRepository() ;
         Dictionary<String, int> DcFilier;
         Dictionary<String, int> DcLesson;
-        ObservableCollection<Student> sourceData;
+        ObservableCollection<Student> StudentList;
         ObservableCollection<Student> selectedList;
 
         int Idselected;
@@ -57,13 +59,26 @@ namespace proj.Views
 
                 var FilierName = Breed1.Items[selectedIndex];
                 var id = DcFilier[FilierName];
-                var students =await StudentData.GetStudntByFilier(id);
-                sourceData = new ObservableCollection<Student>(students);
-                listUser.ItemsSource = sourceData;
+
+                //===============================
+
+                //  Filiere filiere = await dataFilier.GetFiliereById(id);
+                Filiere filiere =await dataFilier.connection.GetWithChildrenAsync<Filiere>(id);
+                var LessonVar = filiere.lessons;
+                StudentList = new ObservableCollection<Student>(filiere.students);
+
+                //===============================
+
+               // var students =await StudentData.GetStudntByFilier(id);
+               // sourceData = new ObservableCollection<Student>(students);
+
+
+                listUser.ItemsSource = StudentList;
 
                 DcLesson = new Dictionary<string, int>();
                 var NameList = new List<string>();
-                var LessonVar =await dataLesson.GetLessonNameByFilier(id);
+               // var LessonVar =await dataLesson.GetLessonNameByFilier(id);
+              
                 foreach (Lesson Data in LessonVar)
                 {
                     DcLesson.Add(Data.LessonName, Data.IdLesson);
@@ -91,29 +106,37 @@ namespace proj.Views
 
                 private void BtnSave(object sender, EventArgs e)
         {
-            
-            foreach(var student in selectedList)
+
+            if (selectedList!=null)
             {
-                Console.WriteLine(student.ToString()+$"  {Idselected}");
-                 Absence absence = new Absence()
-                  {
-                IdStudent = student.IdStudent ,
-                IdLesson = Idselected,
-                IsPersnt = true
-                };
-                DataAbsence.InsertAbsence(absence);
-               
+
+                foreach (var student in selectedList)
+                {
+                    Console.WriteLine(student.ToString() + $"  {Idselected}");
+                    Absence absence = new Absence()
+                    {
+                        IdStudent = student.IdStudent,
+                        IdLesson = Idselected,
+                        IsPresent = false,
+                        Date = DateTime.Now
+
+                    };
+                    DataAbsence.InsertAbsence(absence);
+
+                }
             }
+            
+            
             // li mamghaybinc
             IEnumerable<Student> presentstudents;
-            if (selectedList.Count > 0)
+            if (selectedList != null && selectedList.Count > 0)
             {
-                presentstudents = sourceData.Where(std => selectedList.All(absentStd => absentStd.IdStudent != std.IdStudent));
+                presentstudents = StudentList.Where(std => selectedList.All(absentStd => absentStd.IdStudent != std.IdStudent));
              
             }
             else
             {
-                presentstudents = sourceData.AsEnumerable();
+                presentstudents = StudentList.AsEnumerable();
             }
             Console.WriteLine($"count f present Student ${presentstudents.Count()}");
 
@@ -126,14 +149,22 @@ namespace proj.Views
                     {
                         IdStudent = student.IdStudent,
                         IdLesson = Idselected,
-                        IsPersnt = false
+                        IsPresent = true,
+                        Date = DateTime.Now
                     };
                     DataAbsence.InsertAbsence(absence);
 
                 }
             }
-            
-            DisplayAlert("Saved!", $"{presentstudents.Count()} students are Present, and {selectedList.Count} are Absent.", "Cancel");
+
+            if (selectedList != null)
+            {
+                DisplayAlert("Saved!", $"{presentstudents.Count()} students are Present, and {selectedList.Count} are Absent.", "Cancel");
+            }
+            else
+            {
+                DisplayAlert("Saved!", $"Tous les etudiant sont presents {presentstudents.Count()}", "Cancel");
+            }
         }
         public void chechbox_CheckChanged(object sender, EventArgs e)
         {
@@ -141,9 +172,9 @@ namespace proj.Views
 
             selectedList = new ObservableCollection<Student>();
 
-            for (int i = 0; i < sourceData.Count; i++)
+            for (int i = 0; i < StudentList.Count; i++)
             {
-                Student item = sourceData[i];
+                Student item = StudentList[i];
 
                 if (item.IsChecked)
                 {

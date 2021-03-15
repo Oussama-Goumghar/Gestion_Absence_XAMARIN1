@@ -11,11 +11,22 @@ namespace proj.Models
     {
         [PrimaryKey, AutoIncrement]
         public int IdAbsence { get; set; }
+
         [ForeignKey(typeof(Student))] 
         public int IdStudent { get; set; }
+
+        [OneToOne]
+        public Student student { get; set; }
+
         [ForeignKey(typeof(Lesson))]
         public int IdLesson { get; set; }
-        public bool IsPersnt { get; set; }
+
+        [OneToOne]
+        public Lesson lesson { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public bool IsPresent { get; set; }
 
 
     }

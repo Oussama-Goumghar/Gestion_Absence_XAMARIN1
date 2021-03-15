@@ -51,14 +51,20 @@ namespace proj.Repositories
         }
         async public Task<List<Absence>> GetStudntByid(int idLStudent,int IdLessons)
         {
-            var ss = await _connection.QueryAsync<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons}");
+            var ss = await _connection.QueryAsync<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons} AND IsPresent=0");
+            return ss;
+
+        }
+        async public Task<List<Absence>> GetPresentByid(int idLStudent, int IdLessons)
+        {
+            var ss = await _connection.QueryAsync<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons} AND IsPresent=1");
             return ss;
 
         }
         async public Task<int> UpdateAbcense(int Id , bool IsPersnt)
         {
          
-            int res =await _connection.ExecuteAsync($"update Absence set IsPersnt={IsPersnt} where IdAbsence={Id} ");
+            int res =await _connection.ExecuteAsync($"update Absence set IsPresent={IsPersnt} where IdAbsence={Id} ");
             return res;
 
         }

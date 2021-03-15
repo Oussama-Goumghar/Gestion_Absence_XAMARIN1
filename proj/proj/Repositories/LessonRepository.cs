@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace proj.Repositories
 {
@@ -47,9 +48,10 @@ namespace proj.Repositories
                     IdFiliere = FilierId
                 };
                 await connection.InsertAsync(lesson);
-                Filiere filiere = await filiereRepository.GetFiliereById(FilierId);
-                filiere.lessons.Add(lesson);
-                
+                //Filiere filiere = await filiereRepository.connection.GetWithChildrenAsync<Filiere>(FilierId);      
+                //    filiere.lessons.Add(lesson);
+                //    await connection.UpdateWithChildrenAsync(filiere);    
+                  
                 return true;
 
             }
@@ -60,6 +62,7 @@ namespace proj.Repositories
         {
             bool res = false;
             Filiere filiere = await filiereRepository.GetFiliereById(FilierId);
+              
             foreach (var item in filiere.lessons)
             {
                 if (item.LessonName == LessonName)
@@ -68,6 +71,7 @@ namespace proj.Repositories
                 }
             }
             return res;
+            
         }
 
 

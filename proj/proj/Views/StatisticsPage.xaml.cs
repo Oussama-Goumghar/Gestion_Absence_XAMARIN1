@@ -1,22 +1,23 @@
-﻿using proj.Models;
+﻿using Microcharts;
+using proj.Models;
 using proj.Repositories;
-using SQLite;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
+using Entry = Microcharts.ChartEntry;
 
 namespace proj.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
-    public partial class SearchPage : ContentPage
+    public partial class StatisticsPage : ContentPage
     {
         FiliereRepository dataFilier;
         Dictionary<String, int> DcFilier;
@@ -28,10 +29,9 @@ namespace proj.Views
         ObservableCollection<Absence> sourceData;
         ObservableCollection<Student> students;
         ObservableCollection<Absence> NowselectedListPresnet;
-        ObservableCollection<Student> NowselectedListAbsence;
-      
+        ObservableCollection<Absence> NowselectedListAbsence;
 
-        public SearchPage()
+        public StatisticsPage()
         {
             dataFilier = new FiliereRepository();
             InitializeComponent();
@@ -52,7 +52,6 @@ namespace proj.Views
             base.OnAppearing();
         }
 
-
         async public void OnPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = FilierPicker.SelectedIndex;
@@ -62,7 +61,7 @@ namespace proj.Views
                 var id = DcFilier[FilierName];
                 DcLesson = new Dictionary<string, int>();
                 var NameList = new List<string>();
-                var LessonVar =await dataLesson.GetLessonNameByFilier(id);
+                var LessonVar = await dataLesson.GetLessonNameByFilier(id);
                 foreach (Lesson Data in LessonVar)
                 {
                     DcLesson.Add(Data.LessonName, Data.IdLesson);
@@ -71,6 +70,7 @@ namespace proj.Views
                 LessonPicker.ItemsSource = NameList;
             }
         }
+
         async public void OnLessonPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = LessonPicker.SelectedIndex;
@@ -80,7 +80,7 @@ namespace proj.Views
                 var idLesson = DcLesson[LessonName];
                 DcStudent = new Dictionary<string, int>();
                 var NameList = new List<string>();
-                var StudentListe =await DataAbsence.GetStudentByLessonId(idLesson);
+                var StudentListe = await DataAbsence.GetStudentByLessonId(idLesson);
                 foreach (Student Data in StudentListe)
                 {
                     bool KeyExist = DcStudent.ContainsKey(Data.nom);
@@ -93,20 +93,22 @@ namespace proj.Views
                 StudentPicker.ItemsSource = NameList;
             }
         }
+
         async public void OnStudentPickerSelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedIndex = StudentPicker.SelectedIndex;
             int selectedIndexLesson = LessonPicker.SelectedIndex;
 
-            if (selectedIndex != -1 )
+            if (selectedIndex != -1)
 
             {
                 var LessonName = LessonPicker.Items[selectedIndexLesson];
                 var idLesson = DcLesson[LessonName];
                 var StuentName = StudentPicker.Items[selectedIndex];
                 int IdStudent = DcStudent[StuentName];
-                
-                sourceData = new ObservableCollection<Absence>(await DataAbsence.GetStudntByid(IdStudent,idLesson));
+
+                NowselectedListAbsence = new ObservableCollection<Absence>(await DataAbsence.GetStudntByid(IdStudent, idLesson));
+                NowselectedListPresnet = new ObservableCollection<Absence>(await DataAbsence.GetPresentByid(IdStudent, idLesson));
                 students = new ObservableCollection<Student>();
                 //foreach (var sd in sourceData)
                 //{
@@ -125,59 +127,47 @@ namespace proj.Views
                 //    students.Add(stdn);
                 //}
 
-                listStudent.ItemsSource = sourceData;
-            }
-
-        }
-        public void chechbox_CheckChanged(object sender, EventArgs e)
+                var countAbsence = NowselectedListAbsence.Count;
+                var countPresent = NowselectedListPresnet.Count;
+                List<Entry> entries = new List<Entry>
         {
-
-
-            NowselectedListPresnet = new ObservableCollection<Absence>();
-           // NowselectedListAbsence = new ObservableCollection<Student>();
-
-            for (int i = 0; i < sourceData.Count; i++)
+            new Entry(countAbsence)
             {
-                Absence item = sourceData[i];
+                Color=SKColor.Parse("#FF1493"),
+                Label="Abssent",
+                ValueLabel=$"{countAbsence}",
+            },
+            new Entry(countPresent)
+            {
+                Color=SKColor.Parse("#00BFFF"),
+                Label="Present",
+                ValueLabel=$"{countPresent}",
+            }
+        };
 
-                if (item.IsPresent)
-                {
-                    NowselectedListPresnet.Add(item);
-                }
+
+                chart.Chart = new RadarChart { Entries = entries };
+
             }
 
-         //   DisplayAlert("Title", NowselectedListAbsence.Count + " student are relly absence   " + NowselectedListPresnet.Count + "student are relly presnt", "Cancel");
-
         }
-        async public void Update_btn(object sender, EventArgs e)
+
+
+        List<Entry> entries = new List<Entry>
         {
-            if (NowselectedListPresnet.Count > 0)
+            new Entry(200)
             {
-                foreach (var absence in NowselectedListPresnet)
-                {
-                   await DataAbsence.UpdateAbcense(absence.IdAbsence, true);
-                }
+                Label="Abssence",
+                ValueLabel="200",
+                Color=SKColor.Parse("#FF1493"),
+            },
+            new Entry(400)
+            {
+                Label="Abssence",
+                ValueLabel="400",
+                Color=SKColor.Parse("#00BFFF"),
             }
-
-            //if (NowselectedListAbsence.Count > 0)
-            //{
-            //    foreach (var student in NowselectedListAbsence)
-            //    {
-            //       await DataAbsence.UpdateAbcense(student.IdAbsence, true);
-                    
-            //    }
-                
-            //}
-         await  DisplayAlert("UPDATE", "table absence update", "OK");
-            await Navigation.PushAsync(new HomePage());
-        }
-     async public void BtnCanel(object sender, EventArgs e)
-    {
-
-        await Navigation.PushAsync(new HomePage());
-
+        };
 
     }
-   }
-    
 }

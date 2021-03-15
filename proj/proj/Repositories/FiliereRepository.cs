@@ -14,9 +14,9 @@ using SQLiteNetExtensionsAsync.Extensions;
 namespace proj.Repositories
 {
     
-    class FiliereRepository
+    public class FiliereRepository
     {
-        SQLiteAsyncConnection connection;
+     public   SQLiteAsyncConnection connection;
         
     public FiliereRepository()
         {
@@ -24,12 +24,8 @@ namespace proj.Repositories
 
             connection.CreateTableAsync<Filiere>().Wait();
 
-            
-      connection.ExecuteAsync("INSERT INTO Filiere (FiliereName) VALUES('informatique')");
-      connection.ExecuteAsync("INSERT INTO Filiere (FiliereName) VALUES('Genie mecanique')");
-
         }
-       async public Task<List<Filiere>> getall()
+       async public  Task<List<Filiere>> getall()
          {
             return await connection.Table<Filiere>().ToListAsync();
          }

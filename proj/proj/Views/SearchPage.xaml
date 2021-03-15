@@ -92,14 +92,14 @@
                                     <Label FontSize="15"  HorizontalOptions="StartAndExpand" Margin="10,20,6,6" >
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding nom }"  FontAttributes="Bold" />
+                                                <Span Text="{Binding Date }"  FontAttributes="Bold" />
                                                 <Span Text="  " />
-                                                <Span Text="{Binding Prenom}" />
+                                                <!--<Span Text="{Binding IsPresent}" />-->
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <input:CheckBox IsChecked="{Binding IsChecked}" x:Name="chechboxx"  Type="Check" CheckChanged="chechbox_CheckChanged" Color="Purple" BoxBackgroundColor="Transparent"  TextColor="Black" HeightRequest="40" BindingContext="{Binding .} "/>
+                                    <input:CheckBox IsChecked="{Binding IsPresent}" x:Name="chechboxx"  Type="Check" CheckChanged="chechbox_CheckChanged" Color="Purple" BoxBackgroundColor="Transparent"  TextColor="Black" HeightRequest="40" BindingContext="{Binding .} "/>
 
                                 </StackLayout>
                             </ViewCell.View>

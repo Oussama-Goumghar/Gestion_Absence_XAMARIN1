@@ -7,7 +7,7 @@ using System.Text;
 namespace proj.Models
 {
     [Table("Lesson")]
-    class Lesson
+    public class Lesson
     {
         [PrimaryKey,AutoIncrement]
         public int IdLesson { get; set; }
