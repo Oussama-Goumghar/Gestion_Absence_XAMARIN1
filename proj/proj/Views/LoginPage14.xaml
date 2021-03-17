@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="XamUIDemo.LoginPages.LoginPage14"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:renderers="clr-namespace:XamUIDemo.Renderers"
+    BackgroundColor="#1B1B1B"
+    NavigationPage.HasNavigationBar="False">
+    <AbsoluteLayout>
+        <Image
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Aspect="AspectFill"
+            Opacity="0.9"
+            Source="loginBg" />
+        <Image
+            x:Name="Logo"
+            TranslationY="-60"
+            WidthRequest="100"
+            HeightRequest="100"
+            AbsoluteLayout.LayoutBounds="0,0,1,.4"
+            AbsoluteLayout.LayoutFlags="All"
+            
+            Source="loginLogo"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand" />
+        <StackLayout
+
+            AbsoluteLayout.LayoutBounds="1,1,1,.6"
+            AbsoluteLayout.LayoutFlags="All"
+            Spacing="10">
+            <Entry Placeholder="Usernamme" FontSize="16"
+                x:Name="txtUsernameLogin"
+                TranslationX="-60"
+                Opacity="0"
+                Margin="0,0,50,0"
+                HeightRequest="80"
+                    TextColor="White"
+                   PlaceholderColor="White"
+                VerticalOptions="Center"></Entry>
+            <Entry Placeholder="Password" FontSize="16" x:Name="txtPasswordLogin" IsPassword="True"
+                 TranslationX="-60"
+                Opacity="0"
+                Margin="0,0,50,0"
+                HeightRequest="80"
+                VerticalOptions="Center"
+                   TextColor="White"
+                   PlaceholderColor="White"
+                   ></Entry>
+            <!--<StackLayout Orientation="Horizontal">
+                <Button
+                    x:Name="CancelButton"
+                    TranslationX="60"
+                    Opacity="0"
+                    Margin="60,30,0,0"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    AbsoluteLayout.LayoutBounds="1,1,1,.2"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="Red"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Cancel"
+                    TextColor="White"
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="CenterAndExpand"  />
+                <Button
+                    x:Name="LoginButton"
+                    TranslationX="60"
+                    Opacity="0"
+                    Margin="60,30,0,0"
+                    HeightRequest="50"
+                    WidthRequest="150"
+                    AbsoluteLayout.LayoutBounds="1,1,1,.2"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="#0052FF"
+                    Clicked="Login"
+                    CornerRadius="0"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Text="Login"
+                    TextColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" />
+            </StackLayout>-->
+                     <StackLayout
+                Orientation="Vertical"
+                Spacing="10"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button
+                        x:Name="LoginButton"
+                        TranslationX="-50"
+                        Opacity="0"
+                        HeightRequest="60"
+                        WidthRequest="150"
+                        BackgroundColor="Blue"
+                        CornerRadius="5"
+                        Text="LOGIN"
+                        Clicked="Login"
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand" />
+                   
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+       
+    </AbsoluteLayout>
+</ContentPage>

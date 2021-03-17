@@ -22,7 +22,7 @@ namespace proj.Views
 
         async public void BtnCancel(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomePage2());
         }
 
         async private void BtnSave(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace proj.Views
                 if (resultat)
                 {
                    await DisplayAlert("Congratulation ", "La filiére est ajouter avec succée ", "Ok");
-                    await Navigation.PushAsync(new HomePage());
+                    await Navigation.PushAsync(new HomePage2());
                 }
                 else
                 {

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamUIDemo.Animations;
+using XamUIDemo.LoginPages;
 
 namespace proj.Views
 {
@@ -21,6 +23,21 @@ namespace proj.Views
         public RegitrationPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Task.Run(async () =>
+            {
+                await ViewAnimations.FadeAnimY(Logo);
+                await ViewAnimations.FadeAnimY(txtUsername);
+                await ViewAnimations.FadeAnimY(txtPassword);
+                await ViewAnimations.FadeAnimY(txtemail);
+                await ViewAnimations.FadeAnimY(txtPhone);
+                await ViewAnimations.FadeAnimY(LoginButton);
+
+            });
         }
 
         public async void btnAddUser(object sender, EventArgs e)
@@ -64,7 +81,7 @@ namespace proj.Views
                                 var resut = await this.DisplayAlert("Congratulation ", "user Registeration Sucessfull ", "Ok", "Cancel");
                                 if (resut)
                                 {
-                                    await Navigation.PushAsync(new LoginPage());
+                                    await Navigation.PushAsync(new LoginPage10());
                                 }
                             });
                         }

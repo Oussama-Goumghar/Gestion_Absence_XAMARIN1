@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             x:Class="proj.Views.HomePage2"
+             Title="Home "
+              NavigationPage.HasNavigationBar="False">
+    <ContentPage.ToolbarItems >
+        <ToolbarItem Text="Logout" Priority="2" Order="Primary" Clicked="lougOut_Clicked" />
+    </ContentPage.ToolbarItems>
+    <AbsoluteLayout>
+        <Image
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            Aspect="Fill"
+            Source="fondo.jpg"/>
+        <ScrollView
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+            <StackLayout
+                Padding="20,30"
+                Margin="0,80">
+
+
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- GENERAL -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Margin="0,0,0,10"
+                        Opacity=".7"
+                        >
+
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand" >
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ToolbarItem_Activated"/>
+                            </StackLayout.GestureRecognizers>
+
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60"
+                                >
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource General}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource General}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="knowledge"
+                                        />
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Filiere"
+                                TextColor="{StaticResource General}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <!-- TRANSPORT -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Grid.Column="2"
+                        Margin="0,0,0,10"
+                        Opacity=".7">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnLessonPage"/>
+                            </StackLayout.GestureRecognizers>
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60">
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Transport}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Transport}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="video"/>
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Lesson"
+                                TextColor="{StaticResource Transport}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <!-- SHOPPING -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Grid.Row="1"
+                        Margin="0,0,0,10"
+                        Opacity=".7">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnAddStudent"/>
+                            </StackLayout.GestureRecognizers>
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60">
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Shopping}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Shopping}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="student"/>
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Etudiant"
+                                TextColor="{StaticResource Shopping}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <!-- BILLS -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,0,10"
+                        Opacity=".7">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60">
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Bills}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Bills}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="absence"/>
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Absence"
+                                TextColor="{StaticResource Bills}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <!-- ENTERTAIN -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Grid.Row="2"
+                        Margin="0,0,0,10"
+                        Opacity=".7">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnSearch"/>
+                            </StackLayout.GestureRecognizers>
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60">
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Entertain}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Entertain}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="Search"/>
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Chercher"
+                                TextColor="{StaticResource Entertain}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+                    <!-- ENTERTAIN -->
+                    <border:SfBorder
+                        BackgroundColor="{StaticResource Primary}"
+                        BorderWidth="0"
+                        CornerRadius="25"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Margin="0,0,0,10"
+                        Opacity=".7">
+                        <StackLayout
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BtnStatistics"/>
+                            </StackLayout.GestureRecognizers>
+                            <border:SfBorder
+                                BorderWidth="0"
+                                CornerRadius="30"
+                                HeightRequest="60"
+                                Margin="0,0,0,5"
+                                WidthRequest="60">
+                                <AbsoluteLayout>
+                                    <gradient:SfGradientView
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                        AbsoluteLayout.LayoutFlags="All">
+                                        <gradient:SfGradientView.BackgroundBrush>
+                                            <gradient:SfLinearGradientBrush>
+                                                <gradient:SfLinearGradientBrush.GradientStops>
+                                                    <gradient:SfGradientStop Color="White" Offset="0.0"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Grocery}" Offset="0.4"/>
+                                                    <gradient:SfGradientStop Color="{StaticResource Grocery}" Offset="1.0"/>
+                                                </gradient:SfLinearGradientBrush.GradientStops>
+                                            </gradient:SfLinearGradientBrush>
+                                        </gradient:SfGradientView.BackgroundBrush>
+                                    </gradient:SfGradientView>
+                                    <Image
+                                        AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+                                        AbsoluteLayout.LayoutFlags="All"
+                                        Source="statistics"/>
+                                </AbsoluteLayout>
+                            </border:SfBorder>
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                Text="Statistics"
+                                TextColor="{StaticResource Grocery}"/>
+                        </StackLayout>
+                    </border:SfBorder>
+
+
+                </Grid>
+                <StackLayout
+                Orientation="Vertical"
+                Spacing="10"
+                HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Button
+                        x:Name="LoginButton"
+                        HeightRequest="60"
+                        WidthRequest="150"
+                        BackgroundColor="Red"
+                        CornerRadius="5"
+                        Text="Logout"
+                        Clicked="lougOut_Clicked"    
+                        TextColor="White"
+                        HorizontalOptions="CenterAndExpand" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
+    </AbsoluteLayout>
+</ContentPage>

@@ -107,7 +107,7 @@ namespace proj.Views
                                 var resut = await this.DisplayAlert("Congratulation ", "Student Add Sucessfull ", "Ok", "Cancel");
                                 if (resut)
                                 {
-                                    await Navigation.PushAsync(new HomePage());
+                                    await Navigation.PushAsync(new HomePage2());
                                 }
                             });
                         }
@@ -123,7 +123,7 @@ namespace proj.Views
         }
         async public void BtnCancel (object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomePage2());
         }
 
         

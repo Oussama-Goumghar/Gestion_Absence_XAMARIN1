@@ -65,34 +65,46 @@ namespace proj.Views
 
         async private void Button_Clicked(object sender, EventArgs e)
         {
-            FiliereRepository filiereRepository = new FiliereRepository();
+            int selectedIndex = PickerFilier.SelectedIndex;
+
+            if (string.IsNullOrWhiteSpace(txtLessName.Text) && selectedIndex == -1) {
+                await this.DisplayAlert("Error", "Il faut remplire tous les champs", "ok");
+            }
+            else {
+                FiliereRepository filiereRepository = new FiliereRepository();
 
             var LessonName = txtLessName.Text;
             Console.WriteLine(selectedFilierName);
         var res=   await dataLesson.insertToLesson(LessonName, id);
             if (res)
             {
-                Filiere filiere = await filiereRepository.GetFiliereById(id);
-                var count = filiere.lessons.Count();
-                await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
+                //Filiere filiere = await filiereRepository.GetFiliereById(id);
+                //var count = filiere.lessons.Count();
+                await this.DisplayAlert("info","La lesson est ajouter avec success", "ok");
+
+                    await Navigation.PushAsync(new HomePage2());
+                }
+                //if (filiere.lessons != null)
+                //{
+                //    var count = filiere.lessons.Count();
+                //    await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
+                //}
+                //else
+                //{
+                //    await this.DisplayAlert("info","la liste est null", "ok");
+
+                //   }
 
             }
-            //if (filiere.lessons != null)
-            //{
-            //    var count = filiere.lessons.Count();
-            //    await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
-            //}
-            //else
-            //{
-            //    await this.DisplayAlert("info","la liste est null", "ok");
-
-            //   }
-
-
-            
 
 
 
+
+        }
+
+        async private void Button_Clicked_1(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage2());
         }
     }
 }

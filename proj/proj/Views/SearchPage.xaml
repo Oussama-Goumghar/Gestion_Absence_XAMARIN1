@@ -4,77 +4,13 @@
               xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              x:Class="proj.Views.SearchPage">
     <ContentPage.Content>
-        <!--<AbsoluteLayout Margin="3,3,3,3">
-            <ScrollView>
-                <FlexLayout IsVisible="True" JustifyContent="SpaceEvenly" Direction="Column" AlignItems="Start" >
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition  Width="*"></ColumnDefinition>
-                            <ColumnDefinition  Width="190"></ColumnDefinition>
-                            <ColumnDefinition  Width="190"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Picker WidthRequest="100" x:Name="FilierPicker" Title="Filier" Grid.Row="0"  Grid.Column="1" SelectedIndexChanged="OnPickerSelectedIndexChanged">
-                            <Picker.Items>
-                            </Picker.Items>
-                        </Picker>
-                        <Picker  WidthRequest="100" x:Name="LessonPicker"  Title="Lesson" Grid.Row="0"  Grid.Column="2" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged" >
-                            <Picker.Items>
-                            </Picker.Items>
-                        </Picker>
-                        <Picker   x:Name="StudentPicker"  Title="Student" Grid.Row="1"  Grid.Column="1" SelectedIndexChanged="OnStudentPickerSelectedIndexChanged" Grid.ColumnSpan="2">
-                            <Picker.Items>
-                            </Picker.Items>
-                        </Picker>
-
-                    </Grid>
-                    <ListView x:Name="listStudent" HasUnevenRows="True" IsVisible="True"  RowHeight="50" CachingStrategy= " RecycleElement" SeparatorColor="Black" VerticalOptions="FillAndExpand" >
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <ViewCell.View>
-
-                                        <StackLayout Orientation="Horizontal" Margin="6,6,23,6">
-
-                                            
-
-                                                <Label FontSize="15"  HorizontalOptions="StartAndExpand" Margin="10,20,6,6" >
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding nom }"  FontAttributes="Bold" />
-                                                            <Span Text="  " />
-                                                            <Span Text="{Binding Prenom}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-
-                                                <input:CheckBox IsChecked="{Binding IsChecked}" x:Name="chechboxx"  Type="Check" CheckChanged="chechbox_CheckChanged" Color="Purple" BoxBackgroundColor="Transparent"  TextColor="Black" HeightRequest="40" BindingContext="{Binding .} "/>
-                                           
-                                        </StackLayout>
-                                    </ViewCell.View>
-                                        
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </FlexLayout>
-            </ScrollView>
-
-            <Button Text="Cancel" AbsoluteLayout.LayoutBounds="20,530,120,60" TextColor="White" BackgroundColor="Red" Clicked="BtnCanel"></Button>
-            <Button Text="Update" AbsoluteLayout.LayoutBounds="270,530,120,60" TextColor="White" BackgroundColor="Blue" Clicked="Update_btn"></Button>
-           
-
-        </AbsoluteLayout>-->
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Picker  x:Name="FilierPicker" Title="Filier" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
-                <Picker   x:Name="LessonPicker"  Title="Lesson" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged"/>
+                <Picker HorizontalTextAlignment="Center"  x:Name="FilierPicker" Title="Filier" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
+                <Picker HorizontalTextAlignment="Center"  x:Name="LessonPicker"  Title="Lesson" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged"/>
             </StackLayout>
-            <Picker   x:Name="StudentPicker"  Title="Student"  SelectedIndexChanged="OnStudentPickerSelectedIndexChanged" HorizontalOptions="Fill"/>
-            <Label Text="Resultat" FontSize="Large" HorizontalOptions="Center" />
+            <Picker HorizontalTextAlignment="Center"  x:Name="StudentPicker"  Title="Student"  SelectedIndexChanged="OnStudentPickerSelectedIndexChanged" HorizontalOptions="Fill" />
+            
             <BoxView 
                    HeightRequest="1"
                    Color="LightGray"

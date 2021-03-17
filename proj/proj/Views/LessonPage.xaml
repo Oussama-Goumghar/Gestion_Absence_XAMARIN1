@@ -33,7 +33,7 @@
                     <Button Text="Save"  TextColor="#fff" BackgroundColor="Blue" WidthRequest="100"  Clicked="Button_Clicked"></Button>
                 </StackLayout>
                 <StackLayout Grid.Row="4">
-                    <Button Text="Cancel"  TextColor="#fff" BackgroundColor="red" WidthRequest="100" ></Button>
+                    <Button Text="Cancel" Clicked="Button_Clicked_1"  TextColor="#fff" BackgroundColor="red" WidthRequest="100" ></Button>
                 </StackLayout>
 
             </Grid>

@@ -169,12 +169,12 @@ namespace proj.Views
                 
             //}
          await  DisplayAlert("UPDATE", "table absence update", "OK");
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomePage2());
         }
      async public void BtnCanel(object sender, EventArgs e)
     {
 
-        await Navigation.PushAsync(new HomePage());
+        await Navigation.PushAsync(new HomePage2());
 
 
     }

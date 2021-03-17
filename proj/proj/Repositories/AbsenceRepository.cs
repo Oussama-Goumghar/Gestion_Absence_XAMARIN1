@@ -51,7 +51,7 @@ namespace proj.Repositories
         }
         async public Task<List<Absence>> GetStudntByid(int idLStudent,int IdLessons)
         {
-            var ss = await _connection.QueryAsync<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons} AND IsPresent=0");
+            var ss = await _connection.QueryAsync<Absence>($"SELECT * FROM Absence WHERE IdStudent = '{idLStudent}' AND IdLesson={IdLessons} AND IsPresent=0 ORDER BY Date DESC");
             return ss;
 
         }

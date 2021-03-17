@@ -112,7 +112,7 @@ namespace proj.Views
 
                 foreach (var student in selectedList)
                 {
-                    Console.WriteLine(student.ToString() + $"  {Idselected}");
+                   
                     Absence absence = new Absence()
                     {
                         IdStudent = student.IdStudent,
@@ -159,11 +159,13 @@ namespace proj.Views
 
             if (selectedList != null)
             {
-                DisplayAlert("Saved!", $"{presentstudents.Count()} students are Present, and {selectedList.Count} are Absent.", "Cancel");
+                DisplayAlert("Saved!", $"{presentstudents.Count()} étudiants Present, and {selectedList.Count} étudiants Absent.", "Cancel");
+                 Navigation.PushAsync(new HomePage2());
             }
             else
             {
-                DisplayAlert("Saved!", $"Tous les etudiant sont presents {presentstudents.Count()}", "Cancel");
+                DisplayAlert("Saved!", $"Tous les etudiant sont presents", "Cancel");
+                 Navigation.PushAsync(new HomePage2());
             }
         }
         public void chechbox_CheckChanged(object sender, EventArgs e)
@@ -182,13 +184,13 @@ namespace proj.Views
                 }
             }
 
-            DisplayAlert("Title", selectedList.Count + " student have been selected", "Cancel");
+            
 
         }
         async public void BtnCanel(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomePage2());
 
 
         }

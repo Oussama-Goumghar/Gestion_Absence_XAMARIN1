@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="proj.Views.FilierePage">
+             x:Class="proj.Views.FilierePage"
+              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame>
+        <StackLayout Margin="20,200,20,0">
+            <Frame VerticalOptions="Center">
                 <Entry x:Name="filierName_Entry" Placeholder="Le nom de la filiére"/>
             </Frame>
-            <StackLayout Orientation="Horizontal" Padding="20">
-                <Button Text="Cancel"   TextColor="White" BackgroundColor="Red" Clicked="BtnCancel" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save"   TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" Clicked="BtnSave"></Button>
+            <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="20">
+                <Button VerticalOptions="Center" Text="Cancel"   TextColor="White" BackgroundColor="Red" Clicked="BtnCancel" HorizontalOptions="FillAndExpand"></Button>
+                <Button VerticalOptions="Center" Text="Save"   TextColor="White" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" Clicked="BtnSave"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

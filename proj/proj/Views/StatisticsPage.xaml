@@ -7,11 +7,10 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Picker  x:Name="FilierPicker" Title="Filier" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
-                <Picker   x:Name="LessonPicker"  Title="Lesson" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged"/>
+                <Picker HorizontalTextAlignment="Center"  x:Name="FilierPicker" Title="Filier" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
+                <Picker HorizontalTextAlignment="Center"   x:Name="LessonPicker"  Title="Lesson" HorizontalOptions="FillAndExpand" SelectedIndexChanged="OnLessonPickerSelectedIndexChanged"/>
             </StackLayout>
-            <Picker   x:Name="StudentPicker"  Title="Student"  SelectedIndexChanged="OnStudentPickerSelectedIndexChanged" HorizontalOptions="Fill"/>
-            <Label Text="Resultat" FontSize="Large" HorizontalOptions="Center" />
+            <Picker HorizontalTextAlignment="Center"   x:Name="StudentPicker"  Title="Student"  SelectedIndexChanged="OnStudentPickerSelectedIndexChanged" HorizontalOptions="Fill"/>
             <BoxView 
                    HeightRequest="1"
                    Color="LightGray"

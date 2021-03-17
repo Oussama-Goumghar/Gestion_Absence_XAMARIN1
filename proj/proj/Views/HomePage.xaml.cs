@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamUIDemo.LoginPages;
 
 namespace proj.Views
 {
@@ -24,7 +25,7 @@ namespace proj.Views
 
         async    public  void lougOut_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Navigation.PushAsync(new LoginPage10());
         }
         async public void BtnAddStudent(object sender, EventArgs e)
         {
