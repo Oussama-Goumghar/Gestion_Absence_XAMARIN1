@@ -60,24 +60,16 @@ namespace proj.Views
                 var FilierName = Breed1.Items[selectedIndex];
                 var id = DcFilier[FilierName];
 
-                //===============================
-
-                //  Filiere filiere = await dataFilier.GetFiliereById(id);
+  
                 Filiere filiere =await dataFilier.connection.GetWithChildrenAsync<Filiere>(id);
                 var LessonVar = filiere.lessons;
                 StudentList = new ObservableCollection<Student>(filiere.students);
-
-                //===============================
-
-               // var students =await StudentData.GetStudntByFilier(id);
-               // sourceData = new ObservableCollection<Student>(students);
 
 
                 listUser.ItemsSource = StudentList;
 
                 DcLesson = new Dictionary<string, int>();
                 var NameList = new List<string>();
-               // var LessonVar =await dataLesson.GetLessonNameByFilier(id);
               
                 foreach (Lesson Data in LessonVar)
                 {
@@ -126,8 +118,6 @@ namespace proj.Views
                 }
             }
             
-            
-            // li mamghaybinc
             IEnumerable<Student> presentstudents;
             if (selectedList != null && selectedList.Count > 0)
             {

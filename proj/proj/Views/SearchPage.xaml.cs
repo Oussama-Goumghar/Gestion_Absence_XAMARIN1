@@ -108,23 +108,6 @@ namespace proj.Views
                 
                 sourceData = new ObservableCollection<Absence>(await DataAbsence.GetStudntByid(IdStudent,idLesson));
                 students = new ObservableCollection<Student>();
-                //foreach (var sd in sourceData)
-                //{
-                //    int ids = sd.IdStudent;
-                //    Student s =await StudentData.GetStudntByid(ids);
-                //    Student stdn = new Student()
-                //    {
-
-                //        IdAbsence = sd.IdAbsence,
-                //        nom = s.nom,
-                //        Prenom = s.Prenom,
-                //        IsChecked = sd.IsPresent
-
-
-                //    };
-                //    students.Add(stdn);
-                //}
-
                 listStudent.ItemsSource = sourceData;
             }
 
@@ -134,8 +117,6 @@ namespace proj.Views
 
 
             NowselectedListPresnet = new ObservableCollection<Absence>();
-           // NowselectedListAbsence = new ObservableCollection<Student>();
-
             for (int i = 0; i < sourceData.Count; i++)
             {
                 Absence item = sourceData[i];
@@ -145,9 +126,6 @@ namespace proj.Views
                     NowselectedListPresnet.Add(item);
                 }
             }
-
-         //   DisplayAlert("Title", NowselectedListAbsence.Count + " student are relly absence   " + NowselectedListPresnet.Count + "student are relly presnt", "Cancel");
-
         }
         async public void Update_btn(object sender, EventArgs e)
         {
@@ -158,25 +136,12 @@ namespace proj.Views
                    await DataAbsence.UpdateAbcense(absence.IdAbsence, true);
                 }
             }
-
-            //if (NowselectedListAbsence.Count > 0)
-            //{
-            //    foreach (var student in NowselectedListAbsence)
-            //    {
-            //       await DataAbsence.UpdateAbcense(student.IdAbsence, true);
-                    
-            //    }
-                
-            //}
          await  DisplayAlert("UPDATE", "table absence update", "OK");
             await Navigation.PushAsync(new HomePage2());
         }
      async public void BtnCanel(object sender, EventArgs e)
     {
-
         await Navigation.PushAsync(new HomePage2());
-
-
     }
    }
     

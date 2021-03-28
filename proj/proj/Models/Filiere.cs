@@ -21,11 +21,5 @@ namespace proj.Models
         [OneToMany]
         public List<Lesson> lessons { get; set; } = new List<Lesson>();
 
-
-        //public Filiere()
-        //{
-        //    this.lessons = new List<Lesson> ();
-        //    this.students = new List<Student>();
-        //}
     }
 }

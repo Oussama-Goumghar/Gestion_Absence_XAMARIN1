@@ -64,8 +64,6 @@ namespace proj.Views
             else
             {
 
-
-
                 Student student = new Student()
                 {
                     cin = txtCin.Text,
@@ -77,14 +75,8 @@ namespace proj.Views
                 };
 
                 StudentRepository studentDB = new StudentRepository();
-
-
                 try
                 {
-
-
-                    
-
                         bool rowadd = await studentDB.AddStudent(student);
                         if (!rowadd)
                         {

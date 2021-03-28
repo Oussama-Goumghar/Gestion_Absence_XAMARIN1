@@ -21,10 +21,6 @@
             <StackLayout
                 Padding="20,30"
                 Margin="0,80">
-
-
-
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -37,7 +33,7 @@
                         <RowDefinition Height="150"/>
                     </Grid.RowDefinitions>
 
-                    <!-- GENERAL -->
+                   
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"
@@ -88,7 +84,6 @@
                         </StackLayout>
                     </border:SfBorder>
 
-                    <!-- TRANSPORT -->
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"
@@ -135,7 +130,6 @@
                         </StackLayout>
                     </border:SfBorder>
 
-                    <!-- SHOPPING -->
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"
@@ -182,7 +176,6 @@
                         </StackLayout>
                     </border:SfBorder>
 
-                    <!-- BILLS -->
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"
@@ -230,7 +223,6 @@
                         </StackLayout>
                     </border:SfBorder>
 
-                    <!-- ENTERTAIN -->
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"
@@ -277,7 +269,6 @@
                         </StackLayout>
                     </border:SfBorder>
 
-                    <!-- ENTERTAIN -->
                     <border:SfBorder
                         BackgroundColor="{StaticResource Primary}"
                         BorderWidth="0"

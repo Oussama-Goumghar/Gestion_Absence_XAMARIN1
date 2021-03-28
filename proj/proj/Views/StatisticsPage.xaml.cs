@@ -110,23 +110,6 @@ namespace proj.Views
                 NowselectedListAbsence = new ObservableCollection<Absence>(await DataAbsence.GetStudntByid(IdStudent, idLesson));
                 NowselectedListPresnet = new ObservableCollection<Absence>(await DataAbsence.GetPresentByid(IdStudent, idLesson));
                 students = new ObservableCollection<Student>();
-                //foreach (var sd in sourceData)
-                //{
-                //    int ids = sd.IdStudent;
-                //    Student s =await StudentData.GetStudntByid(ids);
-                //    Student stdn = new Student()
-                //    {
-
-                //        IdAbsence = sd.IdAbsence,
-                //        nom = s.nom,
-                //        Prenom = s.Prenom,
-                //        IsChecked = sd.IsPresent
-
-
-                //    };
-                //    students.Add(stdn);
-                //}
-
                 var countAbsence = NowselectedListAbsence.Count;
                 var countPresent = NowselectedListPresnet.Count;
                 List<Entry> entries = new List<Entry>
@@ -146,7 +129,7 @@ namespace proj.Views
         };
 
 
-                chart.Chart = new RadarChart { Entries = entries };
+                chart.Chart = new RadarChart { Entries = entries,LabelTextSize=45f };
 
             }
 

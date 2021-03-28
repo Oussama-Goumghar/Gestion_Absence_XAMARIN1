@@ -15,7 +15,7 @@
                    HeightRequest="1"
                    Color="LightGray"
                    Margin ="40, 10, 40, 0"/>
-            <forms:ChartView x:Name="chart" HeightRequest="300"/>
+            <forms:ChartView x:Name="chart" HeightRequest="300" Margin="0,80,0,0"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

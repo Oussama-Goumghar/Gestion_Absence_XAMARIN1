@@ -16,12 +16,8 @@ namespace proj
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDEzMTQzQDMxMzgyZTM0MmUzMElUdFI0VGJOOGt3eHR0emgzY2s4SkgvdGJvV1RsaVpKV0dHMU5leVIyRjA9");
-            InitializeComponent();
-           
-           MainPage = new NavigationPage( new LoginPage10());
-            
-
-
+            InitializeComponent();       
+           MainPage = new NavigationPage( new LoginPage10());    
         }
 
         protected override void OnStart()

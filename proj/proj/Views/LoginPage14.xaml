@@ -3,7 +3,6 @@
     x:Class="XamUIDemo.LoginPages.LoginPage14"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:renderers="clr-namespace:XamUIDemo.Renderers"
     BackgroundColor="#1B1B1B"
     NavigationPage.HasNavigationBar="False">
     <AbsoluteLayout>
@@ -47,44 +46,7 @@
                    TextColor="White"
                    PlaceholderColor="White"
                    ></Entry>
-            <!--<StackLayout Orientation="Horizontal">
-                <Button
-                    x:Name="CancelButton"
-                    TranslationX="60"
-                    Opacity="0"
-                    Margin="60,30,0,0"
-                    HeightRequest="50"
-                    WidthRequest="150"
-                    AbsoluteLayout.LayoutBounds="1,1,1,.2"
-                    AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="Red"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Cancel"
-                    TextColor="White"
-                    HorizontalOptions="StartAndExpand"
-                    VerticalOptions="CenterAndExpand"  />
-                <Button
-                    x:Name="LoginButton"
-                    TranslationX="60"
-                    Opacity="0"
-                    Margin="60,30,0,0"
-                    HeightRequest="50"
-                    WidthRequest="150"
-                    AbsoluteLayout.LayoutBounds="1,1,1,.2"
-                    AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="#0052FF"
-                    Clicked="Login"
-                    CornerRadius="0"
-                    FontAttributes="Bold"
-                    FontSize="18"
-                    Text="Login"
-                    TextColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand" />
-            </StackLayout>-->
-                     <StackLayout
+            <StackLayout
                 Orientation="Vertical"
                 Spacing="10"
                 HorizontalOptions="FillAndExpand">

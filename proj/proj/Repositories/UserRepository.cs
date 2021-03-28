@@ -23,17 +23,6 @@ namespace proj.Repositories
             connection.CreateTableAsync<User>();
         }
 
-      
-
-        //public IEnumerable<User> GetUsers()
-        //{
-        //    return (from u in connection.Table<User>()
-        //            select u).ToList();
-        //}
-        //public void DeleteUser(int id)
-        //{
-        //    connection.Delete<User>(id);
-        //}
         async public  Task<bool>  AddUser(User user)
         {
             if (await LoginValidate(user.Username,user.Password))
@@ -60,18 +49,6 @@ namespace proj.Repositories
                 return false;
         }
 
-        
-        //public boolean checkAlreadyExist(String email)
-        //{
-        //    String query = "SELECT" + YOUR_EMAIL_COLUMN + FROM + TABLE_NAME + WHERE + YOUR_EMAIL_COLUMN + " =?";
-        //    Cursor cursor = db.rawQuery(query, new String[] { email });
-        //    if (cursor.getCount() > 0)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //        return true;
-        //}
     }
     
     }

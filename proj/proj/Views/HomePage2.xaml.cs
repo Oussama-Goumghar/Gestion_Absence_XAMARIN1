@@ -26,35 +26,23 @@ namespace proj.Views
         async public void lougOut_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new LoginPage10());
-        }
-      
+        }     
         async public void BtnAddStudent(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddStudent());
         }
-
         async public void Button_Clicked(object sender, EventArgs e)
         {
-
             await Navigation.PushAsync(new AbsencePage());
-
-
         }
         async public void BtnLessonPage(object sender, EventArgs e)
         {
-
             await Navigation.PushAsync(new LessonPage());
-
-
         }
         async public void BtnSearch(object sender, EventArgs e)
         {
-
             await Navigation.PushAsync(new SearchPage());
-
-
         }
-
         async public void BtnStatistics(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new StatisticsPage());

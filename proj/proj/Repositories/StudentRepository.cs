@@ -36,22 +36,13 @@ namespace proj.Repositories
         }
         async public Task<List<Student>> GetStudntByFilier(int  filierid)
         {
-
-            //connection.Execute("INSERT INTO Student VALUES");
             var ss =await connection.QueryAsync<Student>($"SELECT * FROM Student  WHERE IdFiliere='{filierid}'");
             return ss;
-
         }
-        //async public Task<IEnumerable<Student>> GetStudent()
-        //{
-        //    return (from u in connection.Table<Student>()
-        //            select u).ToList();
-        //}
+       
         async public Task<Student> GetStudntByid(int idLStudent)
         {
             return await connection.Table<Student>().FirstOrDefaultAsync(std => std.IdStudent == idLStudent);
-          
-
         }
 
         async public Task<bool> CheckExistence(string CIN)

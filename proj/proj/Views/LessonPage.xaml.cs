@@ -53,13 +53,6 @@ namespace proj.Views
                 StudentRepository StudentData = new StudentRepository();
                 selectedFilierName = PickerFilier.Items[selectedIndex];
                 id = Dc[selectedFilierName];
-                //Filiere filiere = await filiereRepository.GetFiliereById(id);
-                //var count = filiere.lessons.Count();
-                //await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
-
-
-
-
             }
         }
 
@@ -78,23 +71,10 @@ namespace proj.Views
         var res=   await dataLesson.insertToLesson(LessonName, id);
             if (res)
             {
-                //Filiere filiere = await filiereRepository.GetFiliereById(id);
-                //var count = filiere.lessons.Count();
                 await this.DisplayAlert("info","La lesson est ajouter avec success", "ok");
 
                     await Navigation.PushAsync(new HomePage2());
                 }
-                //if (filiere.lessons != null)
-                //{
-                //    var count = filiere.lessons.Count();
-                //    await this.DisplayAlert("info", "le nombre des lessons est " + count, "ok");
-                //}
-                //else
-                //{
-                //    await this.DisplayAlert("info","la liste est null", "ok");
-
-                //   }
-
             }
 
 

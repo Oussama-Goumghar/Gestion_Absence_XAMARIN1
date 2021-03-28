@@ -47,11 +47,7 @@ namespace proj.Repositories
                     LessonName = LessonName,
                     IdFiliere = FilierId
                 };
-                await connection.InsertAsync(lesson);
-                //Filiere filiere = await filiereRepository.connection.GetWithChildrenAsync<Filiere>(FilierId);      
-                //    filiere.lessons.Add(lesson);
-                //    await connection.UpdateWithChildrenAsync(filiere);    
-                  
+                await connection.InsertAsync(lesson);          
                 return true;
 
             }
